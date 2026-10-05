@@ -40,17 +40,27 @@ export function Footer() {
         </nav>
 
         <div className="site-footer__block">
-          <h2 className="site-footer__heading">
-            {stores.heading}
-            <span className="site-footer__chip">{stores.pending}</span>
-          </h2>
-          {/* Dimmed and inert on purpose: a live-looking store badge that does nothing
-              when pressed is worse than one that plainly reads as unavailable. */}
+          <h2 className="site-footer__heading">{stores.heading}</h2>
           <div className="site-footer__badges">
-            <LottieScene className="site-footer__badge" ratio={2} src={playUrl} stopAt={BADGE_STOP_FRAME} />
-            <LottieScene className="site-footer__badge" ratio={2} src={appStoreUrl} stopAt={BADGE_STOP_FRAME} />
+            <a
+              aria-label={stores.play.label}
+              className="site-footer__badge"
+              href={stores.play.url}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <LottieScene ratio={2} src={playUrl} stopAt={BADGE_STOP_FRAME} />
+            </a>
+            <a
+              aria-label={stores.appStore.label}
+              className="site-footer__badge"
+              href={stores.appStore.url}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <LottieScene ratio={2} src={appStoreUrl} stopAt={BADGE_STOP_FRAME} />
+            </a>
           </div>
-          <p className="site-footer__note">{stores.note}</p>
         </div>
 
         <div className="site-footer__block">

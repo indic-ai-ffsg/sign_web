@@ -462,11 +462,17 @@ export const social = {
 } as const
 
 // TODO(team): both badges are third-party recreations. Google and Apple require their
-// own official artwork, so these need swapping before the apps actually ship.
+// own official artwork, so these need swapping.
 export const stores = {
   heading: 'On your phone',
-  pending: 'Coming soon',
-  note: 'The mobile apps are not out yet. Use the web version in the meantime.',
+  play: {
+    label: 'Get Indic Sign on Google Play',
+    url: 'https://play.google.com/store/apps/details?id=com.Indic.DefAnimation',
+  },
+  appStore: {
+    label: 'Download Indic Sign on the App Store',
+    url: 'https://apps.apple.com/us/app/indic-sign/id1552365790',
+  },
 } as const
 
 export const footer = {

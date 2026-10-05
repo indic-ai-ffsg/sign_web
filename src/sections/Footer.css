@@ -42,18 +42,6 @@
   gap: var(--space-2);
 }
 
-.site-footer__chip {
-  background-color: var(--color-accent-wash);
-  border-radius: var(--radius-pill);
-  color: var(--color-accent);
-  font-family: var(--font-display);
-  font-size: var(--step--1);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  padding-inline: var(--space-2);
-  text-transform: uppercase;
-}
-
 .site-footer__links {
   display: grid;
   gap: var(--space-2);
@@ -79,16 +67,10 @@
   gap: var(--space-3);
 }
 
-/* Not links, so they must not look live. */
 .site-footer__badge {
-  opacity: 0.5;
+  border-radius: var(--radius);
+  display: block;
   width: calc(var(--scene) * 0.6);
-}
-
-.site-footer__note {
-  color: var(--color-ink-soft);
-  font-size: var(--step--1);
-  max-width: 26ch;
 }
 
 .site-footer__social {
