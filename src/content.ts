@@ -10,7 +10,7 @@ export const BRAND = 'Indic Sign'
 export const PRODUCT = 'Indic AI Sign'
 export const LOGO_ALT = 'Indic AI — Foundation for social good'
 
-export const CTA_LABEL = 'Start learning today'
+export const CTA_LABEL = 'Open the app'
 
 export const nav = {
   skipToContent: 'Skip to content',
