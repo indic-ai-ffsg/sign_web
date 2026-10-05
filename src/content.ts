@@ -472,5 +472,5 @@ export const stores = {
 export const footer = {
   tagline: 'English grammar taught in Indian Sign Language, one tense at a time.',
   navHeading: 'On this page',
-  copyright: 'Copyright © 2025 Indic AI | All rights reserved',
+  copyright: 'Copyright © 2026 Indic AI | All rights reserved',
 } as const
