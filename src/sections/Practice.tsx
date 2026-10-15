@@ -7,6 +7,7 @@ import { practice } from '../content'
 import { useReveal } from '../reveal'
 import boyPic from '../assets/pictograms/boy.webp'
 import applePic from '../assets/pictograms/apple.webp'
+import eatingPic from '../assets/pictograms/eating.jpg'
 import sceneUrl from '../assets/lottie/sign-language.json?url'
 // TODO(team): a wrong placement shows a real ISL sign; a correct one shows a tick,
 // because wrong-sign.json cannot be turned into a "correct" sign — the negation is
@@ -14,7 +15,7 @@ import sceneUrl from '../assets/lottie/sign-language.json?url'
 import wrongSignUrl from '../assets/lottie/wrong-sign.json?url'
 import './Practice.css'
 
-const PICTURES = { boy: boyPic, apple: applePic }
+const PICTURES = { boy: boyPic, apple: applePic, eating: eatingPic }
 
 type Placed = Record<string, string | undefined>
 
@@ -109,7 +110,15 @@ export function Practice() {
                       the row does not grow taller each time a shape is filled. */}
                   {slot.picture ? (
                     <span className="build__pic">
-                      {filled ? <img alt="" src={PICTURES[slot.picture]} /> : null}
+                      {filled ? (
+                        <img
+                          alt=""
+                          className={
+                            slot.picture === 'eating' ? 'build__pic-img build__pic-img--close' : 'build__pic-img'
+                          }
+                          src={PICTURES[slot.picture]}
+                        />
+                      ) : null}
                     </span>
                   ) : null}
                   <button
@@ -127,7 +136,9 @@ export function Practice() {
                     <span className="coded__words">
                       {filled?.words.map((word, i) => (
                         <span
-                          className={word.role ? `coded__word coded__word--${word.role}` : 'coded__word'}
+                          className={`coded__word${word.role ? ` coded__word--${word.role}` : ''}${
+                            word.zigzag ? ' coded__word--zigzag' : ''
+                          }`}
                           key={`${word.text}-${i}`}
                         >
                           {word.text}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Button } from '../components/Button'
 import { StoreBadges } from '../components/StoreBadges'
-import { APP_URL, CTA_LABEL, LOGO_ALT, PRODUCT, nav } from '../content'
+import { WebAppBadge } from '../components/WebAppBadge'
+import { LOGO_ALT, PRODUCT, nav } from '../content'
 import logoUrl from '../assets/logo.png'
 import './Header.css'
 
@@ -61,7 +61,7 @@ export function Header() {
         {/* Stays pinned with the header, so the way into the app and the way onto a
             phone are both one click away from anywhere on the page. */}
         <div className="site-header__actions">
-          <Button href={APP_URL}>{CTA_LABEL}</Button>
+          <WebAppBadge compact />
           <StoreBadges compact />
         </div>
       </div>

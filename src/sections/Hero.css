@@ -20,7 +20,15 @@
 
 .hero__body {
   color: var(--color-ink-soft);
+  display: grid;
   font-size: var(--step-1);
+  gap: var(--space-3);
+}
+
+/* Three paragraphs at lead size are a wall. The first sets the problem at lead size;
+   the two that explain how drop to body size. */
+.hero__body > p + p {
+  font-size: var(--step-0);
 }
 
 .hero__actions {
@@ -35,10 +43,6 @@
   font-size: var(--step--1);
 }
 
-.hero__scene {
-  width: var(--scene);
-}
-
 @media (max-width: 64rem) {
   .hero__inner {
     grid-template-columns: minmax(0, 1fr);
@@ -51,11 +55,6 @@
 
   .hero__body {
     font-size: var(--step-0);
-  }
-
-  /* Kept on narrow viewports, just smaller. */
-  .hero__scene {
-    width: var(--scene-sm);
   }
 }
 
@@ -75,10 +74,6 @@
 
   .hero__copy > *:nth-child(3) {
     animation-delay: 220ms;
-  }
-
-  .hero__copy > *:nth-child(4) {
-    animation-delay: 300ms;
   }
 
   .hero__panel {

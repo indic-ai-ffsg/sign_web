@@ -11,6 +11,8 @@ export const PRODUCT = 'Indic AI Sign'
 export const LOGO_ALT = 'Indic AI — Foundation for social good'
 
 export const CTA_LABEL = 'Open web app'
+// The small line over the label, in the place the store badges say "Download now".
+export const CTA_EYEBROW = 'On desktop or laptop'
 
 export const nav = {
   skipToContent: 'Skip to content',
@@ -22,8 +24,11 @@ export const nav = {
 
 export const hero = {
   title: 'Mastering English for deaf students through the language of visuals',
-  body:
-    'For deaf and hard-of-hearing students, English is usually taught through phonetic rules that do not translate visually. Indic Sign turns English syntax into a visual, logical puzzle instead — Indian Sign Language alongside a proven visual grammar framework, so sentence structure becomes concrete and intuitive for visual learners.',
+  body: [
+    'For deaf and hard-of-hearing students, achieving true literacy requires a pedagogical approach built entirely on visual logic rather than auditory concepts. In traditional classrooms, educators often face the immense challenge of accurately conveying the real-world meaning of abstract English sentences without a shared visual context. Indic Sign overcomes this barrier by simulating natural, first-language acquisition—mirroring how a child organically learns from their environment.',
+    'Every lesson begins with bespoke, AI-generated videos depicting real-life scenarios. This creates 100% congruency between the visual action and the target sentence, ensuring the student intuitively grasps the exact meaning of the situation first, easing the burden on the teacher.',
+    'Once true comprehension is established, Indic Sign transforms English syntax into a clear, visual map to decode the written text. By integrating Indian Sign Language (ISL) alongside a proven visual grammar framework, abstract sentence structure becomes concrete and intuitive. By seamlessly guiding the student from visual comprehension to the independent production of sentences, we complete the learning cycle and facilitate the permanent, natural acquisition of written English.',
+  ],
   ctaNote: 'Made for classrooms and for home.',
 } as const
 
@@ -48,6 +53,9 @@ export type Role = 'article' | 'noun' | 'verb' | 'adjective' | 'preposition' | '
 export type Word = {
   text: string
   role?: Role
+  /** The -ing verb is underlined with a zigzag rather than a line, as the app
+      draws it, so the continuous form is marked by sight. */
+  zigzag?: boolean
 }
 
 export type CodedToken = {
@@ -66,7 +74,6 @@ export type KeyRow = {
   /** The question a student asks to find it. */
   question: string
   shape: Shape
-  slot?: Slot
   /** An example shown inside the container, coloured the way the framework colours it. */
   words: readonly Word[]
   colour: {
@@ -77,15 +84,13 @@ export type KeyRow = {
   }
 }
 
-// The nine containers, in the order the framework's own table lists them. Kept as a
-// plain typed array rather than a const assertion so a row without a slot stays the
-// same shape as one with it.
+// The nine containers, in the order the framework's own table lists them. The key
+// draws every container empty, so the form alone is what is being compared.
 const KEY_ROWS: readonly KeyRow[] = [
   {
     part: 'Subject',
     question: 'Who or what?',
     shape: 'oval',
-    slot: 'who',
     words: [{ text: 'A', role: 'article' }, { text: 'boy', role: 'noun' }],
     colour: { name: 'Red', role: 'noun' },
   },
@@ -100,7 +105,7 @@ const KEY_ROWS: readonly KeyRow[] = [
     part: 'Verb',
     question: 'What doing?',
     shape: 'hexagon',
-    words: [{ text: 'eating', role: 'verb' }],
+    words: [{ text: 'eating', role: 'verb', zigzag: true }],
     colour: { name: 'Blue', role: 'verb' },
   },
   {
@@ -114,7 +119,6 @@ const KEY_ROWS: readonly KeyRow[] = [
     part: 'Prepositional phrase',
     question: 'Where?',
     shape: 'semicircle',
-    slot: 'where',
     words: [{ text: 'at', role: 'preposition' }, { text: 'school' }],
     colour: { name: 'Yellow', role: 'preposition', only: 'the preposition only' },
   },
@@ -143,7 +147,6 @@ const KEY_ROWS: readonly KeyRow[] = [
     part: 'Second person',
     question: 'Who is being spoken to?',
     shape: 'semicircle-down',
-    slot: 'who',
     words: [{ text: 'you', role: 'noun' }],
     colour: { name: 'Red', role: 'noun' },
   },
@@ -270,7 +273,8 @@ export const features = {
       steps: [
         'Pick out the correct structure.',
         'Assemble a sentence from scrambled words.',
-        'Supply the missing word with nothing to choose from.',
+        'Supply the missing word.',
+        'Type the missing word from the QWERTY keyboard.',
       ],
     },
   ] satisfies readonly Flow[],
@@ -326,7 +330,7 @@ export type BuildSlot = {
   id: string
   shape: Shape
   slot?: Slot
-  picture?: 'boy' | 'apple'
+  picture?: 'boy' | 'apple' | 'eating'
 }
 
 export type BuildRound = {
@@ -370,14 +374,14 @@ export const practice = {
     slots: [
       { id: 'who', shape: 'oval', slot: 'who', picture: 'boy' },
       { id: 'tensed', shape: 'diamond' },
-      { id: 'verb', shape: 'hexagon' },
+      { id: 'verb', shape: 'hexagon', picture: 'eating' },
       { id: 'what', shape: 'rectangle', slot: 'what', picture: 'apple' },
     ],
     tokens: [
       {
         id: 'verb',
         label: 'eating',
-        words: [{ text: 'eating', role: 'verb' }],
+        words: [{ text: 'eating', role: 'verb', zigzag: true }],
         belongs: 'eating does not hold the tense — is does. It goes in the hexagon.',
       },
       WHO,
