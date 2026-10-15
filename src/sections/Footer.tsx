@@ -1,14 +1,8 @@
-import { LottieScene } from '../components/LottieScene'
 import { SocialIcon } from '../components/SocialIcon'
+import { StoreBadges } from '../components/StoreBadges'
 import { LOGO_ALT, footer, nav, social, stores } from '../content'
 import logoUrl from '../assets/logo.png'
-import playUrl from '../assets/lottie/google-play-download-button.json?url'
-import appStoreUrl from '../assets/lottie/ios-store-download-now-button.json?url'
 import './Footer.css'
-
-// Both badges are fully drawn and motionless from f100 to f150, then an outro scales
-// them to zero by f210. Holding f120 keeps the finished badge and never reaches that.
-const BADGE_STOP_FRAME = 120
 
 export function Footer() {
   return (
@@ -19,8 +13,8 @@ export function Footer() {
           <p className="site-footer__tagline">{footer.tagline}</p>
         </div>
 
-        {/* The header hides these links below 48rem, so on a phone this is the only
-            way to move around the page. */}
+        {/* The header hides these links below 75rem, so on a narrower screen this is
+            the only way to move around the page. */}
         <nav className="site-footer__block">
           <h2 className="site-footer__heading">{footer.navHeading}</h2>
           <ul className="site-footer__links">
@@ -41,26 +35,7 @@ export function Footer() {
 
         <div className="site-footer__block">
           <h2 className="site-footer__heading">{stores.heading}</h2>
-          <div className="site-footer__badges">
-            <a
-              aria-label={stores.play.label}
-              className="site-footer__badge"
-              href={stores.play.url}
-              rel="noreferrer"
-              target="_blank"
-            >
-              <LottieScene ratio={2} src={playUrl} stopAt={BADGE_STOP_FRAME} />
-            </a>
-            <a
-              aria-label={stores.appStore.label}
-              className="site-footer__badge"
-              href={stores.appStore.url}
-              rel="noreferrer"
-              target="_blank"
-            >
-              <LottieScene ratio={2} src={appStoreUrl} stopAt={BADGE_STOP_FRAME} />
-            </a>
-          </div>
+          <StoreBadges />
         </div>
 
         <div className="site-footer__block">

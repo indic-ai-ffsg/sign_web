@@ -1,0 +1,31 @@
+.store-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.store-badges--compact {
+  gap: var(--space-2);
+}
+
+/* The animation draws a 742×231 badge in the middle of a 1080×540 canvas. The link is
+   cut to the badge itself, so the empty canvas around it neither takes up room in the
+   header nor widens the focus ring. Percentage margins resolve against the width,
+   which is why every offset below is over 742. */
+.store-badges__badge {
+  aspect-ratio: 742 / 231;
+  border-radius: var(--radius);
+  display: block;
+  overflow: hidden;
+  width: var(--badge);
+}
+
+.store-badges--compact .store-badges__badge {
+  width: var(--badge-sm);
+}
+
+.store-badges__art {
+  margin-left: calc(-100% * 169 / 742);
+  margin-top: calc(-100% * 154.5 / 742);
+  width: calc(100% * 1080 / 742);
+}
