@@ -85,6 +85,9 @@
   --sign: 7.5rem;
   --video: 17rem;
   --logo: 2.75rem;
+  /* Store badge widths; height follows from the badge's own proportions. */
+  --badge: 8.5rem;
+  --badge-sm: 7.5rem;
 
   --shadow-panel: 0 1px 2px rgb(14 38 84 / 6%), 0 12px 32px -12px rgb(14 38 84 / 20%);
 }

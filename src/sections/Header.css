@@ -61,7 +61,14 @@
 .site-header__nav {
   align-items: center;
   display: flex;
-  gap: var(--space-5);
+  gap: var(--space-4);
+  margin-left: auto;
+}
+
+.site-header__actions {
+  align-items: center;
+  display: flex;
+  gap: var(--space-3);
 }
 
 .site-header__link {
@@ -75,16 +82,28 @@
   text-decoration: underline;
 }
 
+/* The links give way first: the footer repeats them, and the actions are the reason
+   the header is pinned at all. */
+@media (max-width: 75rem) {
+  .site-header__nav {
+    display: none;
+  }
+}
+
+/* Below this the header stops being pinned, because a header tall enough to hold all
+   three actions would take a fifth of a phone screen. The actions drop under the
+   brand instead. */
 @media (max-width: 48rem) {
   .site-header {
     position: static;
   }
 
-  .site-header__nav {
+  .site-header__inner {
+    flex-wrap: wrap;
     gap: var(--space-3);
   }
 
-  .site-header__link {
-    display: none;
+  .site-header__actions {
+    flex-wrap: wrap;
   }
 }
