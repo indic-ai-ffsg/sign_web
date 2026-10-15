@@ -50,11 +50,7 @@ export function ShapeKey() {
                   {/* The container on its own. The word that goes in it is the next
                       column along, so the form is compared against form here. */}
                   <td className="key__cell">
-                    <span
-                      className={`coded__shape coded__shape--${item.shape}${
-                        item.slot ? ` coded__shape--${item.slot}` : ''
-                      }`}
-                    >
+                    <span className={`coded__shape coded__shape--${item.shape}`}>
                       <span className="visually-hidden">{shapeNames[item.shape]}</span>
                     </span>
                   </td>
@@ -79,7 +75,9 @@ export function ShapeKey() {
                       {item.words.map((word) => (
                         <span
                           className={
-                            word.role ? `coded__word coded__word--${word.role}` : 'coded__word'
+                            `coded__word${word.role ? ` coded__word--${word.role}` : ''}${
+                            word.zigzag ? ' coded__word--zigzag' : ''
+                          }`
                           }
                           key={word.text}
                         >

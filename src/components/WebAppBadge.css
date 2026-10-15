@@ -1,0 +1,48 @@
+/* Height follows the store badge artwork (742×231) at the matching width token, so
+   this sits exactly level with them. Width is left to the text. */
+.web-app-badge {
+  --badge-height: calc(var(--badge) * 231 / 742);
+
+  align-items: center;
+  background-color: var(--color-badge);
+  border: 1px solid var(--color-badge-line);
+  border-radius: calc(var(--badge-height) * 0.18);
+  color: var(--color-badge-ink);
+  display: inline-flex;
+  gap: calc(var(--badge-height) * 0.22);
+  height: var(--badge-height);
+  padding-inline: calc(var(--badge-height) * 0.3) calc(var(--badge-height) * 0.4);
+  text-decoration: none;
+  transition: background-color 140ms ease;
+}
+
+.web-app-badge--compact {
+  --badge-height: calc(var(--badge-sm) * 231 / 742);
+}
+
+.web-app-badge:hover {
+  background-color: var(--color-badge-hover);
+}
+
+.web-app-badge__icon {
+  flex: none;
+  height: calc(var(--badge-height) * 0.6);
+  width: calc(var(--badge-height) * 0.6);
+}
+
+.web-app-badge__text {
+  display: grid;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.web-app-badge__eyebrow {
+  font-size: calc(var(--badge-height) * 0.22);
+  font-weight: 500;
+}
+
+.web-app-badge__label {
+  font-family: var(--font-display);
+  font-size: calc(var(--badge-height) * 0.42);
+  font-weight: 700;
+}

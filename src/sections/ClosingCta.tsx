@@ -1,6 +1,6 @@
-import { Button } from '../components/Button'
 import { LottieScene } from '../components/LottieScene'
-import { APP_URL, CTA_LABEL, closing } from '../content'
+import { WebAppBadge } from '../components/WebAppBadge'
+import { closing } from '../content'
 import { useReveal } from '../reveal'
 import sceneUrl from '../assets/lottie/help-sign.json?url'
 import './ClosingCta.css'
@@ -16,7 +16,7 @@ export function ClosingCta() {
             {closing.heading}
           </h2>
           <p className="closing__body">{closing.body}</p>
-          <Button href={APP_URL}>{CTA_LABEL}</Button>
+          <WebAppBadge />
         </div>
         <LottieScene className="closing__scene" loop src={sceneUrl} />
       </div>

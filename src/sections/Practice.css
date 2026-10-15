@@ -74,9 +74,19 @@
   z-index: 1;
 }
 
-.build__pic img {
+.build__pic-img {
   height: 100%;
   width: auto;
+}
+
+/* The boy and the apple are cut-outs; the eating close-up is a square crop from the
+   lesson video, so it gets a round frame drawn in the shapes' own outline. */
+.build__pic-img--close {
+  aspect-ratio: 1;
+  background-color: var(--color-shape);
+  border: var(--stroke) solid var(--color-shape-line);
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .build__slot {

@@ -33,7 +33,7 @@ function Demo({ kind }: { kind: Principle['demo'] }) {
 
   return (
     <span aria-hidden="true" className="demo demo--tokens">
-      <span className="demo__token">a</span>
+      <span className="demo__token">an</span>
       <span className="demo__token">apple</span>
       <span className="demo__token">at school</span>
     </span>

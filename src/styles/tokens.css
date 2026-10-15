@@ -16,6 +16,12 @@
   --color-wrong: #a8321f;
   --color-wrong-wash: #fbeae7;
   --color-line: #dbe3ec;
+  /* The store badges' own black and grey keyline, so "Open web app" can be drawn
+     as a third badge beside them. */
+  --color-badge: #000000;
+  --color-badge-hover: #262626;
+  --color-badge-ink: #ffffff;
+  --color-badge-line: #a6a6a6;
   /* A line that has to read as hovered rather than merely present. */
   --color-line-strong: #b9c6d6;
 
@@ -26,7 +32,8 @@
      containers grey; the shipping product does not. */
   --color-shape: #ffffff;
   --color-shape-line: #000000;
-  --color-role-article: #932595;
+  /* Pink, as the framework asks for articles; 5.2:1 on white. */
+  --color-role-article: #cc1f78;
   --color-role-noun: #b01217;
   --color-role-verb: #2213ca;
   /* The rest of the framework's word colours. Green, yellow and brown are darkened
@@ -34,6 +41,11 @@
      particular cannot be used at its printed value and stay readable. */
   --color-role-adjective: #146b32;
   --color-role-preposition: #7a5c00;
+  /* Yellow text that reads as yellow cannot clear 4.5:1 on white (this one is
+     1.7:1), so the word itself keeps the dark gold above and the true yellow goes
+     on everything that is not text: the swatch and the underline. Without it the
+     yellow row read as a second brown. */
+  --color-role-preposition-mark: #f2c000;
   --color-role-time: #000000;
   --color-role-adverb: #6f4419;
   /* Container fills by grammatical slot. The framework describes a red oval for Who

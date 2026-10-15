@@ -261,6 +261,7 @@
 /* Yellow marks the preposition itself, not the phrase it opens — the noun after it
    keeps the default ink, which is what the rule "for prepositions only" means. */
 .coded__word--preposition {
+  border-bottom-color: var(--color-role-preposition-mark);
   color: var(--color-role-preposition);
 }
 
@@ -270,6 +271,32 @@
 
 .coded__word--adverb {
   color: var(--color-role-adverb);
+}
+
+/* The underline stays in the box as a transparent border, so a zigzag word sits on
+   the same baseline as its neighbours; the zigzag is drawn under it in the word's own
+   colour through a mask. */
+.coded__word--zigzag {
+  border-bottom-color: transparent;
+  position: relative;
+}
+
+.coded__word--zigzag::after {
+  --zigzag: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 6'%3E%3Cpolyline points='0,1.2 4,4.8 8,1.2' fill='none' stroke='black' stroke-width='2.4'/%3E%3C/svg%3E");
+
+  background-color: currentColor;
+  content: '';
+  height: 0.45em;
+  -webkit-mask-image: var(--zigzag);
+  -webkit-mask-repeat: repeat-x;
+  -webkit-mask-size: 0.5em 100%;
+  mask-image: var(--zigzag);
+  mask-repeat: repeat-x;
+  mask-size: 0.5em 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 100%;
 }
 
 .coded__plain {

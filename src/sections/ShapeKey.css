@@ -99,7 +99,7 @@
 }
 
 .key__swatch--preposition {
-  background-color: var(--color-role-preposition);
+  background-color: var(--color-role-preposition-mark);
 }
 
 .key__swatch--time {
